@@ -2,10 +2,8 @@
 
 /**
  * Extension allows preloading of custom content into all edit forms
- * when creating an article
- *
- * Also adds a new tag <nopreload> which is used to mark sections which
- * shouldn't be preloaded, ever; has no effect on the rendering of pages
+ * when creating an article. <includeonly> and <noinclude> are respected
+ * and stripped during new article population.
  *
  * @file
  * @ingroup Extensions
@@ -20,8 +18,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Preloader',
-	'author'         => 'Rob Church',
-	'version'        => '1.1.1',
+	'author'         => 'Rob Church, Troy Engel',
+	'version'        => '1.1.2',
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:Preloader',
 	'descriptionmsg' => 'preloader-desc',
 );
@@ -33,14 +31,8 @@ $wgExtensionMessagesFiles['Preloader'] =  dirname(__FILE__) . '/Preloader.i18n.p
 $wgPreloaderSource[ NS_MAIN ] = 'Template:Preload';
 
 $wgHooks['EditFormPreloadText'][] = 'Preloader::mainHook';
-$wgHooks['ParserFirstCallInit'][] = 'Preloader::setParserHook';
 
 class Preloader {
-
-	public static function setParserHook( $parser ) {
-		$parser->setHook( 'nopreload', array( __CLASS__, 'parserHook' ) );
-		return true;
-	}
 
 	/** Hook function for the preloading */
 	public static function mainHook( &$text, &$title ) {
@@ -51,12 +43,6 @@ class Preloader {
 				$text = $stx;
 		}
 		return true;
-	}
-
-	/** Hook function for the parser */
-	public static function parserHook( $input, $args, &$parser ) {
-		$output = $parser->parse( $input, $parser->getTitle(), $parser->getOptions(), false, false );
-		return $output->getText();
 	}
 
 	/**
@@ -92,12 +78,13 @@ class Preloader {
 	}
 
 	/**
-	 * Remove <nopreload> sections from the text and trim whitespace
+	 * Remove sections from the text and trim whitespace
 	 *
 	 * @param $text
 	 * @return string
 	 */
 	static function transform( $text ) {
-		return trim( preg_replace( '/<nopreload>.*<\/nopreload>/s', '', $text ) );
+		$text = trim( preg_replace( '/<\/?includeonly>/s', '', $text ) );
+		return trim( preg_replace( '/<noinclude>.*<\/noinclude>/s', '', $text ) );
 	}
 }
