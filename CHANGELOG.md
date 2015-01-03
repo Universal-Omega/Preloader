@@ -1,5 +1,10 @@
 Preloader Changelog
 ===================
+## 2015-01-03 Version 1.2.1 - Troy Engel
+* Update URL to new Github
+* Update Copyrights
+* Bump version to indicate newer than phantom "1.2.0" (never released)
+
 ## 2015-01-03 Version 1.1.2 - Troy Engel
 * Add MIT license and email thread with Rob
 * Deprecate preload tags, support includeonly/noinclude instead
