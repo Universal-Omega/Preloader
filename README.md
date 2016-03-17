@@ -24,12 +24,16 @@ The Preloader extension requires MediaWiki 1.7.0 or later.
 
 ## 3. Installation
 
-Clone the Github repository into your extensions subdirectory:
+Git - clone the Github repository into your extensions subdirectory:
 
 ```
 cd /path/to/wiki/extensions
 git clone https://github.com/troyengel/Preloader/
 ```
+
+Composer - the package is available via Composer / Packagist:
+
+* https://packagist.org/packages/troyengel/preloader
 
 Then edit your `LocalSettings.php` file and add the following line:
 
