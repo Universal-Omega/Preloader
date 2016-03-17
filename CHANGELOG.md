@@ -1,5 +1,9 @@
 Preloader Changelog
 ===================
+## 2015-01-03 Version 1.2.2 - Troy Engel
+* Add composer.json to support Composer (Pierre Rudloff)
+* Submit composer package to Pkgist
+
 ## 2015-01-03 Version 1.2.1 - Troy Engel
 * Update URL to new Github
 * Update Copyrights

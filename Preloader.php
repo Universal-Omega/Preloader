@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Preloader',
 	'author'         => 'Rob Church, Troy Engel',
-	'version'        => '1.2.1',
+	'version'        => '1.2.2',
 	'url'            => 'https://github.com/troyengel/Preloader',
 	'descriptionmsg' => 'preloader-desc',
 );
