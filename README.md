@@ -1,7 +1,7 @@
 Preloader MediaWiki Extension
 =============================
 
-Fork of http://www.mediawiki.org/wiki/Extension:Preloader
+See http://www.mediawiki.org/wiki/Extension:Preloader
 
 ## Overview
 
@@ -20,11 +20,11 @@ This extension supports the standard `<includeonly>` and `<noinclude>` tags in t
 
 ## 2. Requirements
 
-The Preloader extension requires MediaWiki 1.7.0 or later.
+The Preloader extension requires MediaWiki 1.25.0 or later.
 
 ## 3. Installation
 
-Git - clone the Github repository into your extensions subdirectory:
+Git - clone the GitHub repository into your extensions subdirectory:
 
 ```
 cd /path/to/wiki/extensions
@@ -38,7 +38,7 @@ Composer - the package is available via Composer / Packagist:
 Then edit your `LocalSettings.php` file and add the following line:
 
 ```
-require_once "$IP/extensions/Preloader/Preloader.php";
+wfLoadExtension( 'Preloader' );
 ```
 
 Installation can be verified through the **Special:Version** page on your wiki.
@@ -48,14 +48,14 @@ Installation can be verified through the **Special:Version** page on your wiki.
 Configuration of the boilerplate sources is done via the `$wgPreloaderSource` configuration variable, which takes the following format:
 
 ```
-$wgPreloaderSource[ <namespace index> ] = PAGE TITLE;
+$wgPreloaderSource[<namespace index>] = PAGE TITLE;
 ```
 
 For instance:
 
 ```
-$wgPreloaderSource[ NS_MAIN ] = 'Template:Boilerplate';
-$wgPreloaderSource[ NS_HELP ] = 'Template:Boilerplate help';
+$wgPreloaderSource[NS_MAIN] = 'Template:Boilerplate';
+$wgPreloaderSource[NS_HELP] = 'Template:Boilerplate help';
 ```
 
 ...indicates that the boilerplate text for pages in the main namespace should be loaded from **Template:Boilerplate**, while pages in the Help namespace will be preloaded from **Template:Boilerplate_help**. Other namespaces have no boilerplate configured.

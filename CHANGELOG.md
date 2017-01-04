@@ -1,5 +1,11 @@
 Preloader Changelog
 ===================
+## 2017-01-04 Version 1.3 - Jack Phoenix
+* Code cleanup
+* Support for JSON-based internationalization (i18n) files
+* Support for extension registration (extension.json)
+* MediaWiki 1.25 or newer is now required
+
 ## 2015-01-03 Version 1.2.2 - Troy Engel
 * Add composer.json to support Composer (Pierre Rudloff)
 * Submit composer package to Pkgist
