@@ -24,11 +24,11 @@ The Preloader extension requires MediaWiki 1.25.0 or later.
 
 ## 3. Installation
 
-Git - clone the GitHub repository into your extensions subdirectory:
+Git - clone the GitLab repository into your extensions subdirectory:
 
 ```
 cd /path/to/wiki/extensions
-git clone https://github.com/troyengel/Preloader/
+git clone https://gitlab.com/troyengel/Preloader/
 ```
 
 Composer - the package is available via Composer / Packagist:
@@ -89,4 +89,4 @@ __TOC__
 
 ## 6. Feedback
 
-Please submit comments, suggestions and bug reports to https://github.com/troyengel/Preloader/.
+Please submit comments, suggestions and bug reports to https://gitlab.com/troyengel/Preloader/.
