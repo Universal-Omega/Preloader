@@ -1,5 +1,9 @@
 Preloader Changelog
 ===================
+## 2019-07-11 Version 1.4 - Troy Engel
+* Apply fix for deprecated MW call (Daniel A Kessler, #6)
+* Fix leftover doc updates from GitLab migration (Phillip Patriakeas, #4)
+
 ## 2017-01-04 Version 1.3 - Jack Phoenix
 * Code cleanup
 * Support for JSON-based internationalization (i18n) files
