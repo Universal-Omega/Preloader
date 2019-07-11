@@ -40,7 +40,9 @@ class Preloader {
 		$title = Title::newFromText( $page );
 		if ( $title && $title->exists() ) {
 			$revision = Revision::newFromTitle( $title );
-			return self::transform( $revision->getText() );
+			$content = $revision->getContent();
+			$text = ContentHandler::getContentText( $content );
+			return self::transform( $text );
 		} else {
 			return false;
 		}
