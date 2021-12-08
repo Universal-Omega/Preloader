@@ -1,7 +1,8 @@
 <?php
 
-class Preloader {
+use MediaWiki\MediaWikiServices;
 
+class Preloader {
 	/** Hook function for the preloading */
 	public static function mainHook( &$text, &$title ) {
 		$src = self::preloadSource( $title->getNamespace() );
@@ -39,9 +40,13 @@ class Preloader {
 	static function sourceText( $page ) {
 		$title = Title::newFromText( $page );
 		if ( $title && $title->exists() ) {
-			$revision = Revision::newFromTitle( $title );
-			$content = $revision->getContent();
+			$revisionRecord = MediaWikiServices::getInstance()
+				->getRevisionLookup()
+				->getRevisionByTitle( $title );
+
+			$content = $revisionRecord->getContent();
 			$text = ContentHandler::getContentText( $content );
+
 			return self::transform( $text );
 		} else {
 			return false;
