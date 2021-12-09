@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\SlotRecord;
 
 class Preloader {
 	/** Hook function for the preloading */
@@ -44,7 +45,7 @@ class Preloader {
 				->getRevisionLookup()
 				->getRevisionByTitle( $title );
 
-			$content = $revisionRecord->getContent();
+			$content = $revisionRecord->getContent( SlotRecord::MAIN );
 			$text = ContentHandler::getContentText( $content );
 
 			return self::transform( $text );
