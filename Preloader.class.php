@@ -45,23 +45,15 @@ class Preloader {
 				->getRevisionLookup()
 				->getRevisionByTitle( $title );
 
-			$content = $revisionRecord->getContent( SlotRecord::MAIN );
-			$text = ContentHandler::getContentText( $content );
+			$user = RequestContext::getMain()->getUser();
 
-			return self::transform( $text );
+			$content = $revisionRecord->getContent( SlotRecord::MAIN );
+			$parserOptions = ParserOptions::newFromUser( $user );
+			$transformed = $content->preloadTransform( $title, $parserOptions );
+
+			return ContentHandler::getContentText( $transformed );
 		} else {
 			return false;
 		}
-	}
-
-	/**
-	 * Remove sections from the text and trim whitespace
-	 *
-	 * @param $text
-	 * @return string
-	 */
-	static function transform( $text ) {
-		$text = trim( preg_replace( '/<\/?includeonly>/s', '', $text ) );
-		return trim( preg_replace( '/<noinclude>.*<\/noinclude>/s', '', $text ) );
 	}
 }
