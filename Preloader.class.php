@@ -45,9 +45,12 @@ class Preloader {
 				->getRevisionLookup()
 				->getRevisionByTitle( $title );
 
+			$user = RequestContext::getMain()->getUser();
+
 			$content = $revisionRecord->getContent( SlotRecord::MAIN );
-			parserOptions = ParserOptions::newFromUser( $wgUser );
+			$parserOptions = ParserOptions::newFromUser( $user );
 			$transformed = $content->preloadTransform( $title, $parserOptions );
+
 			return ContentHandler::getContentText( $transformed );
 		} else {
 			return false;
