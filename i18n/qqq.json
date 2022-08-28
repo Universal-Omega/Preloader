@@ -2,8 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Purodha",
-			"The Evil IP address"
+			"The Evil IP address",
+			"Universal Omega"
 		]
 	},
-	"preloader-desc": "{{desc}}"
+	"preloader-desc": "{{desc|name=Preloader|url=https://www.mediawiki.org/wiki/Extension:Preloader}}"
 }
