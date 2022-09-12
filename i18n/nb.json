@@ -1,6 +1,8 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Jon Harald Søby"
+		]
 	},
 	"preloader-desc": "Gir egendefinerbar forhåndslastet tekst for nye sider i de enkelte navnerommene"
 }
