@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"McDutchie",
 			"Siebrand"
 		]
 	},
-	"preloader-desc": "Geeft de mogelijkheid aan te passen per naamruimte tekstblokken te maken voor nieuwe pagina's"
+	"preloader-desc": "Voorziet in aanpasbare standaardtekst per naamruimte voor nieuwe pagina’s"
 }
