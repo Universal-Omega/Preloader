@@ -2,7 +2,6 @@ Preloader MediaWiki Extension
 =============================
 
 See http://www.mediawiki.org/wiki/Extension:Preloader
-**THIS PROJECT IS UNMAINTAINED**
 
 ## Overview
 
@@ -25,7 +24,7 @@ The Preloader extension requires MediaWiki 1.25.0 or later.
 
 ## 3. Installation
 
-Git - clone the GitLab repository into your extensions subdirectory, then edit your `LocalSettings.php` file and add the following line:
+Clone the GitHub repository into your extensions subdirectory, then edit your `LocalSettings.php` file and add the following line:
 
 ```
 wfLoadExtension( 'Preloader' );
