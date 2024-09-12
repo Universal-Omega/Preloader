@@ -1,5 +1,8 @@
 Preloader Changelog
 ===================
+## 2023-02-07 Version 1.4.1 - Carlo Ferraro
+* Fixed deprecated MW calls
+
 ## 2019-07-11 Version 1.4 - Troy Engel
 * Apply fix for deprecated MW call (Daniel A Kessler, #6)
 * Fix leftover doc updates from GitLab migration (Phillip Patriakeas, #4)

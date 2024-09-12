@@ -1,8 +1,5 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
-use MediaWiki\Revision\SlotRecord;
-
 class Preloader {
 	/** Hook function for the preloading */
 	public static function mainHook( &$text, &$title ) {
@@ -41,19 +38,31 @@ class Preloader {
 	static function sourceText( $page ) {
 		$title = Title::newFromText( $page );
 		if ( $title && $title->exists() ) {
-			$revisionRecord = MediaWikiServices::getInstance()
-				->getRevisionLookup()
-				->getRevisionByTitle( $title );
+			$revisionRecord = MediaWiki\MediaWikiServices::getInstance()->getRevisionLookup()->getRevisionByTitle( $title );
+                        if ( class_exists( 'MediaWiki\Revision\SlotRecord' ) ) {
+                        // MediaWiki >= 1.32
+                                $role = MediaWiki\Revision\SlotRecord::MAIN;
+                        } else {
+                        // MediaWiki <= 1.31
+                                $role = MediaWiki\Storage\SlotRecord::MAIN;
+                        }
 
-			$user = RequestContext::getMain()->getUser();
-
-			$content = $revisionRecord->getContent( SlotRecord::MAIN );
-			$parserOptions = ParserOptions::newFromUser( $user );
-			$transformed = $content->preloadTransform( $title, $parserOptions );
-
-			return ContentHandler::getContentText( $transformed );
+                        $content = $revisionRecord->getContent( $role );
+                        $text = ContentHandler::getContentText( $content );
+                        return self::transform( $text );
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * Remove sections from the text and trim whitespace
+	 *
+	 * @param $text
+	 * @return string
+	 */
+	static function transform( $text ) {
+		$text = trim( preg_replace( '/<\/?includeonly>/s', '', $text ) );
+		return trim( preg_replace( '/<noinclude>.*<\/noinclude>/s', '', $text ) );
 	}
 }
