@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Tensama0415",
 			"아라"
 		]
 	},
-	"preloader-desc": "새 문서에 대해 사용자 정의 이름공간마다 상용구를 제공"
+	"preloader-desc": "새 문서에 대해 사용자 지정 이름공간마다 상용구를 제공"
 }
